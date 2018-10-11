@@ -59,7 +59,9 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   git
+  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,10 +95,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/dsakuma/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
 
-export PATH=$PATH:/Users/dsakuma/.gem/ruby/2.3.0/bin
+# Conda
+export PATH="/usr/local/anaconda3/bin:$PATH"
+#. /usr/local/anaconda3/etc/profile.d/conda.sh
 
+# FuzzyFinder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

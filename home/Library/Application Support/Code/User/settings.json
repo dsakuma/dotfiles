@@ -1,0 +1,8 @@
+{
+    "ruby.format": "rubocop",
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.intellisense": "rubyLocate",
+    "vim.useSystemClipboard": true,
+    "workbench.statusBar.feedback.visible": false,
+    "files.trimTrailingWhitespace": true
+}

@@ -1,8 +1,11 @@
 {
-    "ruby.format": "rubocop",
-    "ruby.codeCompletion": "rcodetools",
-    "ruby.intellisense": "rubyLocate",
+    // "python.linting.pylintEnabled": false,
+    // "python.linting.flake8Enabled": true,
+    // "ruby.format": "rubocop",
+    // "ruby.codeCompletion": "rcodetools",
+    // "ruby.intellisense": "rubyLocate",
     "vim.useSystemClipboard": true,
     "workbench.statusBar.feedback.visible": false,
-    "files.trimTrailingWhitespace": true
+    "window.zoomLevel": 0,
+    // "files.trimTrailingWhitespace": true,
 }

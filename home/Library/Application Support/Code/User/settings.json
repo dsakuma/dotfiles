@@ -7,5 +7,7 @@
     "vim.useSystemClipboard": true,
     "workbench.statusBar.feedback.visible": false,
     "window.zoomLevel": 0,
+    "editor.minimap.enabled": true,
+    "C_Cpp.updateChannel": "Insiders",
     // "files.trimTrailingWhitespace": true,
 }

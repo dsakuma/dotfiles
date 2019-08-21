@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Conda
-export PATH="/usr/local/anaconda3/bin:$PATH"
+. /usr/local/anaconda3/etc/profile.d/conda.sh
 
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

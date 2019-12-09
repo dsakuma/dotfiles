@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Daniel Sakuma
+	email = dsakuma@gmail.com
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true

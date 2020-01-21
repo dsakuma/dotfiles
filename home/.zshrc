@@ -62,6 +62,7 @@ plugins=(
   autojump
   git
   docker-compose
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -97,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Conda
-. /usr/local/anaconda3/etc/profile.d/conda.sh
+[[ -e /usr/local/anaconda3/etc/profile.d/conda.sh ]] && . /usr/local/anaconda3/etc/profile.d/conda.sh
 
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -110,3 +111,6 @@ if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+
+# SSH Agent
+export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket

@@ -6,7 +6,7 @@
     // "ruby.intellisense": "rubyLocate",
     "vim.useSystemClipboard": true,
     "workbench.statusBar.feedback.visible": false,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "editor.minimap.enabled": true,
     "C_Cpp.updateChannel": "Insiders",
     "editor.suggestSelection": "first",

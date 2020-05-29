@@ -70,6 +70,7 @@ plugins=(
   git
   docker-compose
   docker
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh

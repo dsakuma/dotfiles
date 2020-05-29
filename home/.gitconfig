@@ -11,3 +11,5 @@
 	required = true
 [pull]
 	rebase = true
+[core]
+	editor = vim

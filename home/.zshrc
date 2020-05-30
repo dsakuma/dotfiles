@@ -111,14 +111,14 @@ source $ZSH/oh-my-zsh.sh
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Python user packages
-export PATH=~/.local/bin:$PATH 
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Python user packages
+# export PATH=~/.local/bin:$PATH 
+
 # SSH Agent
-export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
+# export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket

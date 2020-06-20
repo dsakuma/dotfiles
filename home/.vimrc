@@ -4,7 +4,6 @@ set number
 set nowrap
 set hidden
 "set wildmenu
-"colorscheme codedark
 
 "Fix color for lightline.vim
 if !has('gui_running')
@@ -12,9 +11,8 @@ if !has('gui_running')
 endif
 
 call plug#begin()
-Plug 'kien/ctrlp.vim'
-Plug 'Lokaltog/powerline'
 Plug 'preservim/NERDTree'
-Plug 'tomasiser/vim-code-dark'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()

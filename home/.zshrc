@@ -122,3 +122,6 @@ if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-clou
 
 # SSH Agent
 # export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
+
+# Fix color in lightline.vim
+export TERM=xterm-256color

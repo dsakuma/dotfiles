@@ -3,6 +3,8 @@ set hlsearch
 set number
 set nowrap
 set hidden
+set encoding=utf-8
+"set fileencoding=utf-8
 "set wildmenu
 
 "Fix color for lightline.vim

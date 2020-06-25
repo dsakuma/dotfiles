@@ -4,8 +4,8 @@ set number
 set nowrap
 set hidden
 set encoding=utf-8
+set wildmenu
 "set fileencoding=utf-8
-"set wildmenu
 
 "Fix color for lightline.vim
 if !has('gui_running')
@@ -17,4 +17,7 @@ Plug 'preservim/NERDTree'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
+
+colorscheme codedark

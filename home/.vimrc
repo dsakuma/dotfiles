@@ -38,6 +38,10 @@ set expandtab
 " To display the status line always
 set laststatus=2
 
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
 " Set color theme
 colorscheme codedark
 

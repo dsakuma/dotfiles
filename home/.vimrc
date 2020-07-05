@@ -42,6 +42,10 @@ set laststatus=2
 set textwidth=80
 set colorcolumn=+1
 
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
 " Set color theme
 colorscheme codedark
 

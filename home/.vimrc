@@ -7,6 +7,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
+" Leader
+let mapleader = ","
+
 " Highlight syntax
 syntax on
 
@@ -45,6 +48,10 @@ set colorcolumn=+1
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
+
+" Shortcuts
+nmap <leader>ne :NERDTreeToggle<CR>
+nnoremap <silent> <C-p> :Files<CR>
 
 " Set color theme
 colorscheme codedark

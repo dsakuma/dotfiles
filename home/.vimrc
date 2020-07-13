@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomasiser/vim-code-dark'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Leader

@@ -51,7 +51,8 @@ set splitbelow
 set splitright
 
 " Shortcuts
-nmap <leader>ne :NERDTreeToggle<CR>
+" nmap <leader>ne :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :Files<CR>
 
 " Set color theme

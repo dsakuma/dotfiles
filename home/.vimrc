@@ -50,6 +50,10 @@ set colorcolumn=+1
 set splitbelow
 set splitright
 
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
 " Shortcuts
 " nmap <leader>ne :NERDTreeToggle<CR>
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>

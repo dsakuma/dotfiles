@@ -63,8 +63,8 @@ set colorcolumn=+1
 
 " YouCompleteMe settings
 "let g:ycm_python_binary_path = 'python'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Shortcuts
 " nmap <leader>ne :NERDTreeToggle<CR>
@@ -78,3 +78,6 @@ colorscheme codedark
 if !has('gui_running')
   set t_Co=256
 endif
+
+" Disable coc warning for vim < 8.1.1719 or node < 10.12.0
+let g:coc_disable_startup_warning = 1

@@ -4,11 +4,12 @@ Plug 'preservim/NERDTree'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Leader
@@ -19,6 +20,9 @@ syntax on
 
 " Highlight matching in search
 set hlsearch
+
+" Disable swapfiles
+set noswapfile
 
 " Show line numbers
 set number

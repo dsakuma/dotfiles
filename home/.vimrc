@@ -73,7 +73,7 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :Files<CR>
 
 " Set color theme
-colorscheme codedark
+silent! colorscheme codedark
 
 "Fix color for lightline.vim
 if !has('gui_running')

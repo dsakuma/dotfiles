@@ -104,18 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 # Conda
 [[ -e /usr/local/anaconda3/etc/profile.d/conda.sh ]] && . /usr/local/anaconda3/etc/profile.d/conda.sh
 
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Python user packages
 # export PATH=~/.local/bin:$PATH 
@@ -148,4 +141,4 @@ unset __conda_setup
 
 # asdf
 if command -v brew &> /dev/null; then . $(brew --prefix asdf)/asdf.sh; fi
-if [ -f '$HOME/.asdf/asdf.sh' ]; then . $HOME/.asdf/asdf.sh; fi
+[ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh

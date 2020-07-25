@@ -62,11 +62,6 @@ set expandtab
 set textwidth=80
 set colorcolumn=+1
 
-" YouCompleteMe settings
-"let g:ycm_python_binary_path = 'python'
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " Shortcuts
 " nmap <leader>ne :NERDTreeToggle<CR>
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>

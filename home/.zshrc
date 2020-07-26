@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Conda
-[[ -e /usr/local/anaconda3/etc/profile.d/conda.sh ]] && . /usr/local/anaconda3/etc/profile.d/conda.sh
+# [[ -e /usr/local/anaconda3/etc/profile.d/conda.sh ]] && . /usr/local/anaconda3/etc/profile.d/conda.sh
 
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -140,3 +140,8 @@ unset __conda_setup
 # asdf
 if command -v brew &> /dev/null; then . $(brew --prefix asdf)/asdf.sh; fi
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
+
+# Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools

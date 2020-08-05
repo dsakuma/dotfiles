@@ -1,5 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/usr/bin:$PATH
+# Add Ruby user packages to path
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+# Add Python user packages to path
+# export PATH=~/.local/bin:$PATH 
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -104,23 +110,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Python user packages
-# export PATH=~/.local/bin:$PATH 
 
 # SSH Agent
 # export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 
 # Fix color in lightline.vim
 export TERM=xterm-256color
-
-# Ruby user packages
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

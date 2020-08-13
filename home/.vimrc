@@ -10,7 +10,6 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-"Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Leader

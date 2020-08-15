@@ -18,6 +18,9 @@ let mapleader = ","
 " Highlight syntax
 syntax on
 
+" Allow backspace over indent, eol and start
+:set backspace=2
+
 " Highlight matching in search
 set hlsearch
 

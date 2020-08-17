@@ -15,6 +15,11 @@ call plug#end()
 " Leader
 let mapleader = ","
 
+" Shortcuts
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nmap <leader>l :set list!<CR>
+
 " Highlight syntax
 syntax on
 
@@ -64,10 +69,8 @@ set expandtab
 set textwidth=80
 set colorcolumn=+1
 
-" Shortcuts
-" nmap <leader>ne :NERDTreeToggle<CR>
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-nnoremap <silent> <C-p> :Files<CR>
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
 
 " Set color theme
 silent! colorscheme codedark

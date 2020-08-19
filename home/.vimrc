@@ -1,6 +1,7 @@
 " Enable plugins
 call plug#begin()
 Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

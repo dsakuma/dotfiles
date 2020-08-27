@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
+" Plug 'sheerun/vim-polyglot'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -18,6 +19,8 @@ call plug#end()
 let mapleader = ","
 
 " Shortcuts
+nmap <silent> gd <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :Files<CR>
 nmap <leader>l :set list!<CR>

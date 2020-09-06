@@ -95,3 +95,7 @@ let g:ale_linters = {
 
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
+
+" NERDTree ignore files
+set wildignore+=*.swp,*.DS_Store,__pycache__
+let NERDTreeRespectWildIgnore=1

@@ -87,6 +87,7 @@ set laststatus=2
 
 "Coc
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 nmap <leader> rn <Plug>(coc-rename)
 " Disable coc warning for vim < 8.1.1719 or node < 10.12.0
 let g:coc_disable_startup_warning = 1
@@ -106,4 +107,4 @@ set wildignore+=*.swp,*.DS_Store,__pycache__
 let NERDTreeRespectWildIgnore=1
 
 " Fzf
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :GFiles<CR>

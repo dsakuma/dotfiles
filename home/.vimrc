@@ -111,4 +111,4 @@ set wildignore+=*.swp,*.DS_Store,__pycache__
 let NERDTreeRespectWildIgnore=1
 
 " Fzf
-nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <C-p> :GFiles --exclude-standard --others<CR>

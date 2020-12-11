@@ -16,9 +16,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
 
-" Leader
-let mapleader = ","
-
 " General shortcuts
 nmap <leader>l :set list!<CR>
 

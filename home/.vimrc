@@ -7,14 +7,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'tomasiser/vim-code-dark'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
+
+" Leader
+"let mapleader = ","
 
 " General shortcuts
 nmap <leader>l :set list!<CR>

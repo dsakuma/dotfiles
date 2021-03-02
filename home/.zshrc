@@ -9,9 +9,9 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 function choose_theme {
     if [[ $OSTYPE =~ 'darwin' ]]; then
-      echo 'apple';
-    else
       echo 'robbyrussell';
+    else
+      echo 'kafeitu';
     fi
 }
 ZSH_THEME="$(choose_theme)"

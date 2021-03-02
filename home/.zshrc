@@ -131,7 +131,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # asdf
-#if command -v brew &> /dev/null && brew list asdf &> /dev/null; then 
 if which asdf > /dev/null; then 
   . $(brew --prefix asdf)/asdf.sh; 
 fi

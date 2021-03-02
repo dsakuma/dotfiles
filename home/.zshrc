@@ -1,11 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/usr/bin:$PATH
-# Add Ruby user packages to path
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-# Add Python user packages to path
-# export PATH=~/.local/bin:$PATH 
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -17,7 +11,7 @@ function choose_theme {
     if [[ $OSTYPE == 'darwin19.0' ]]; then
       echo 'robbyrussell';
     else
-      echo 'clean';
+      echo 'robbyrussell';
     fi
 }
 ZSH_THEME="$(choose_theme)"
@@ -110,11 +104,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Add Ruby user packages to path
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+# Add Python user packages to path
+# export PATH=~/.local/bin:$PATH 
+
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# SSH Agent
-# export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 
 # Fix color in lightline.vim
 export TERM=xterm-256color
@@ -135,7 +134,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # asdf
-if command -v brew &> /dev/null; then . $(brew --prefix asdf)/asdf.sh; fi
+#if command -v brew &> /dev/null && brew list asdf &> /dev/null; then 
+if which asdf > /dev/null; then 
+  . $(brew --prefix asdf)/asdf.sh; 
+fi
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
 
 # Android Studio
@@ -143,5 +145,6 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-autoload -U +X bashcompinit && bashcompinit
+# (understand)
+autoload -U +X bashcompinit && bashcompinit 
 complete -o nospace -C /usr/bin/terraform terraform

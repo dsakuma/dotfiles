@@ -109,9 +109,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-# Add Python user packages to path
-# export PATH=~/.local/bin:$PATH 
-
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -144,7 +141,3 @@ fi
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# (understand)
-autoload -U +X bashcompinit && bashcompinit 
-complete -o nospace -C /usr/bin/terraform terraform

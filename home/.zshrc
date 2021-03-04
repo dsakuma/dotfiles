@@ -11,7 +11,7 @@ function choose_theme {
     if [[ $OSTYPE =~ 'darwin' ]]; then
       echo 'robbyrussell';
     else
-      echo 'robbyrussel';
+      echo 'robbyrussell';
     fi
 }
 ZSH_THEME="$(choose_theme)"

@@ -11,7 +11,7 @@ function choose_theme {
     if [[ $OSTYPE =~ 'darwin' ]]; then
       echo 'robbyrussell';
     else
-      echo 'kafeitu';
+      echo 'robbyrussel';
     fi
 }
 ZSH_THEME="$(choose_theme)"
@@ -103,6 +103,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Add user and hostname to prompt
+if [[ $OSTYPE =~ 'darwin' ]]; then
+  prompt_color='green'
+else
+  prompt_color='yellow'
+fi
+#PROMPT="$fg[$prompt_color]%}$USER@%{$fg[$prompt_color]%}%m ${PROMPT}"
+PROMPT="$fg[$prompt_color]%}%m ${PROMPT}"
 
 # Add Ruby user packages to path
 if which ruby >/dev/null && which gem >/dev/null; then

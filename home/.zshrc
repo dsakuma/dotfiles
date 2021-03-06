@@ -110,7 +110,6 @@ if [[ $OSTYPE =~ 'darwin' ]]; then
 else
   prompt_color='yellow'
 fi
-#PROMPT="%{$fg[$prompt_color]%}$USER@%{$fg[$prompt_color]%}%m ${PROMPT}"
 PROMPT="%{$fg[$prompt_color]%}%m ${PROMPT}"
 
 # Add Ruby user packages to path

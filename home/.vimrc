@@ -9,7 +9,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
-Plug 'sheerun/vim-polyglot'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'

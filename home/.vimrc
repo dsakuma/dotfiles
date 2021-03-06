@@ -87,6 +87,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader> rn <Plug>(coc-rename)
 " Disable coc warning for vim < 8.1.1719 or node < 10.12.0
 let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = ['coc-tsserver']
 
 " Ale
 " Define linters

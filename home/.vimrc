@@ -1,6 +1,7 @@
 " Enable plugins
 call plug#begin()
 Plug 'dense-analysis/ale'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
@@ -78,7 +79,7 @@ nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us
 
 " Set color theme
-silent! colorscheme codedark
+silent! colorscheme dracula
 
 " Lightline
 " Fix color for lightline.vim

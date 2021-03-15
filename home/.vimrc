@@ -6,7 +6,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
 Plug 'tomasiser/vim-code-dark'
@@ -88,23 +87,6 @@ if !has('gui_running')
 endif
 " Always display the status line
 set laststatus=2
-
-"Coc
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-" Shortcuts
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-" Disable coc warning for vim < 8.1.1719 or node < 10.12.0
-let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-tsserver']
 
 " Ale
 " Define linters

@@ -117,6 +117,9 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# Add npm user packages to path
+export PATH="$HOME/.npm-packages/bin:$PATH"
+
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

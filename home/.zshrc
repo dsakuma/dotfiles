@@ -120,6 +120,9 @@ fi
 # Add npm user packages to path
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
+# Python user packages
+export PATH=~/.local/bin:$PATH
+
 # FuzzyFinder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

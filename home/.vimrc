@@ -1,16 +1,12 @@
 " Enable plugins
 call plug#begin()
-Plug 'dense-analysis/ale'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
-Plug 'tomasiser/vim-code-dark'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
 
@@ -88,16 +84,6 @@ if !has('gui_running')
 endif
 " Always display the status line
 set laststatus=2
-
-" Ale
-" Define linters
-let g:ale_linters = {
-      \   'python': ['flake8']
-      \}
-let g:ale_fixers = {
-      \   'python': ['black', 'isort']
-      \}
-let g:ale_fix_on_save = 1
 
 " NERDTree
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>

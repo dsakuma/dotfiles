@@ -12,6 +12,8 @@ call plug#end()
 
 " General shortcuts
 nmap <leader>l :set list!<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-p> :GFiles --cached --exclude-standard --others<CR>
 
 " Highlight syntax
 syntax on
@@ -86,12 +88,8 @@ endif
 set laststatus=2
 
 " NERDTree
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 " Show hidden files
 let NERDTreeShowHidden=1
 " Ignore files
 set wildignore+=*.swp,*.DS_Store,__pycache__
 let NERDTreeRespectWildIgnore=1
-
-" Fzf
-nnoremap <silent> <C-p> :GFiles --cached --exclude-standard --others<CR>

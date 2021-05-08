@@ -7,8 +7,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
-Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " General shortcuts

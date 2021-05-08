@@ -13,6 +13,7 @@ call plug#end()
 
 " General shortcuts
 nmap <leader>l :set list!<CR>
+nmap <silent> <leader>s :set spell!<CR>
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :GFiles --cached --exclude-standard --others<CR>
 
@@ -64,10 +65,6 @@ set colorcolumn=+1
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
-
-" Spell checking
-nmap <silent> <leader>s :set spell!<CR>
-set spelllang=en_us
 
 " Set color theme
 silent! colorscheme dracula

@@ -5,17 +5,18 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 call plug#end()
 
 " General shortcuts
-nmap <leader>l :set list!<CR>
-nmap <silent> <leader>s :set spell!<CR>
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :GFiles --cached --exclude-standard --others<CR>
+
+" Set color theme
+silent! colorscheme dracula
 
 " Highlight syntax
 syntax on
@@ -65,9 +66,6 @@ set colorcolumn=+1
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
-
-" Set color theme
-silent! colorscheme dracula
 
 " Lightline
 " Fix color for lightline.vim

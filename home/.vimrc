@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/NERDTree'
 Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " General shortcuts
@@ -35,14 +36,6 @@ set nowrap
 
 " Permit to change buffer without saving
 set hidden
-
-" For Coc, some servers have issues with backup files
-set nobackup
-set nowritebackup
-
-" For Coc, having longer updatetime (default is 4000 ms = 4 s) leads
-" to noticeable delays and poor user experience.
-set updatetime=300
 
 " Enable wildmenu for completion
 set wildmenu

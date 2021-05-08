@@ -1,5 +1,6 @@
 " Enable plugins
 call plug#begin()
+Plug 'bkad/CamelCaseMotion'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
@@ -14,6 +15,7 @@ call plug#end()
 " General shortcuts
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :GFiles --cached --exclude-standard --others<CR>
+
 
 " Set color theme
 silent! colorscheme dracula
@@ -81,3 +83,6 @@ let NERDTreeShowHidden=1
 " Ignore files
 set wildignore+=*.swp,*.DS_Store,__pycache__
 let NERDTreeRespectWildIgnore=1
+
+" CamelCaseMotion
+let g:camelcasemotion_key = '<leader>'

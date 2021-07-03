@@ -71,6 +71,7 @@ plugins=(
   docker-compose
   docker
   ssh-agent
+  vagrant
   zsh-syntax-highlighting
 )
 

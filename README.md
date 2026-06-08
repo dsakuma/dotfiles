@@ -4,14 +4,12 @@ My dotfiles
 
 ## Prerequisites
 
-* [Homesick](https://github.com/technicalpickles/homesick)
+* [chezmoi](https://www.chezmoi.io/)
 
 ## Usage
 
-Clone and link this castle
-
 ```bash
-homesick clone git@github.com:dsakuma/dotfiles.git
-homesick link dotfiles
+chezmoi init git@github.com:dsakuma/dotfiles.git
+chezmoi apply
 exec zsh -l
 ```

@@ -1,0 +1,15 @@
+[include]
+    path = ~/.gitconfig.local
+	
+[init]
+	defaultBranch = main
+
+[alias]
+	st = status -sb
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true

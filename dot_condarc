@@ -1,0 +1,10 @@
+channels:
+  - conda-forge  # Primary channel for fast, community-maintained packages
+  - defaults     # Fallback channel for official Anaconda packages
+  
+# Force top-down channel resolution to eliminate C-library conflicts  
+channel_priority: strict
+
+# Block legacy Conda from hijacking native shell paths on startup. 
+# (Note: Micromamba runs without a base Python environment and completely ignores this setting)
+auto_activate_base: false

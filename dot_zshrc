@@ -1,0 +1,130 @@
+# ==============================================================================
+# 1. HELPER FUNCTIONS & OS DETECTION
+# ==============================================================================
+eval_if_exists()   { if command -v "$1" &> /dev/null; then eval "$("$1" "${@:2}")"; fi }
+source_if_exists() { if [[ -f "$1" ]]; then source "$1"; fi }
+
+is_macos()         { [[ $OSTYPE =~ "darwin" ]]; }
+is_macos_arm()     { is_macos && [[ $(uname -p) == 'arm64' ]]; }
+is_macos_intel()   { is_macos && [[ $(uname -p) == 'i386' ]]; }
+
+# ==============================================================================
+# 2. CORE ENVIRONMENT VARIABLES & PATHS
+# ==============================================================================
+# Homebrew (Sets global binaries for Apple Silicon Mac, Intel Mac, and Linux)
+for brew_path in "/opt/homebrew/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew" "/usr/local/bin/brew"; do
+  eval_if_exists "$brew_path" "shellenv"
+done
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+
+export EDITOR=vim
+export FZF_DEFAULT_COMMAND='fd'
+export PIPENV_VENV_IN_PROJECT=1
+export ANDROID_HOME=$(if is_macos; then echo "$HOME/Library/Android/sdk"; else echo "$HOME/Android/Sdk"; fi)
+
+# Native Zsh array syntax for clean, duplicate-free PATH management
+typeset -U path
+path=(
+  $HOME/.local/bin
+  $ANDROID_HOME/tools/bin
+  $ANDROID_HOME/platform-tools
+  $ANDROID_HOME/emulator
+  $path
+)
+
+# ==============================================================================
+# 3. PLUGINS (Using Antidote)
+# ==============================================================================
+export ANTIDOTE_HOME=$(if is_macos; then echo "/opt/homebrew/opt/antidote/share/antidote"; else echo "/usr/share/zsh/share/zsh-antidote"; fi)
+
+source_if_exists $ANTIDOTE_HOME/antidote.zsh
+antidote load # Looks for a list of plugins in ~/.zshplugins by default
+
+# ==============================================================================
+# 4. COMPLETIONS (The High-Performance Way)
+# ==============================================================================
+# Add local completions or plugin-installed completions to fpath BEFORE compinit
+typeset -U fpath
+fpath=(~/.local/share/zsh/site-functions $fpath)
+
+# Securely initialize Zsh completion system exactly once per day to optimize speed
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t \'%j\' ~/.zcompdump 2>/dev/null)" ]; then
+  compinit
+else
+  compinit -C # Skip verification if cache is fresh
+fi
+
+# ==============================================================================
+# 5. RUNTIME & ENVIRONMENT MANAGERS
+# ==============================================================================
+# These MUST load first because they inject languages and modify your paths.
+eval_if_exists mise activate zsh
+source_if_exists "$HOME/.cargo/env"
+
+# ==============================================================================
+# 6. INTERACTIVE TOOLS & PROMPT
+# ==============================================================================
+# These rely on the paths set above to build your shell's interface.
+
+# Zoxide alters the 'cd' command behavior
+eval_if_exists zoxide init --cmd cd zsh
+
+# Starship renders the prompt (inherits paths from Mise/Cargo and hooks into Zoxide)
+eval_if_exists starship init zsh
+
+# FZF Key-bindings & Completion configurations
+source_if_exists /usr/share/doc/fzf/examples/key-bindings.zsh
+source_if_exists /usr/share/doc/fzf/examples/completion.zsh  
+# source <(fzf --zsh) # Safe fallback if you update to fzf v0.48+
+
+# ==============================================================================
+# 7. ALIASES
+# ==============================================================================
+alias ls="eza"
+alias cat="bat"
+alias lg="lazygit"
+alias dcup="docker-compose up"
+alias mm="micromamba"
+
+if is_macos; then
+  alias update="brew upgrade && brew update"
+else
+  alias update="yay -Syu"
+fi
+
+# Git Shortcodes
+alias ga="git add"                                                                                                                                                                                                      
+alias gb="git branch"                                                                                                                                                                                                   
+alias gc="git commit -v"                                                                                                                                                                                                
+alias gcm='git checkout main 2>/dev/null || git checkout master'
+alias gco='git checkout'                                                                                                                                                                                                
+alias gd="git diff"                                                                                                                                                                                                     
+alias gdca='git diff --cached'
+alias gf="git fetch"                                                                                                                                                                                                    
+alias gl='git pull'                                                                                                                                                                                                     
+alias gm="git merge"                                                                                                                                                                                                    
+alias gp="git push"                                                                                                                                                                                                     
+alias gst='git status' 
+alias gunwip='git log -n 1 | grep -q -c "\--wip--" && git reset HEAD~1'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
+
+# ==============================================================================
+# 8. AUTO-GENERATED CONFIGS (Always at the bottom)
+# ==============================================================================
+# >>> mamba initialize >>>
+export MAMBA_EXE='/usr/bin/micromamba';
+export MAMBA_ROOT_PREFIX='$HOME/.local/share/mamba';
+if [[ -x "$MAMBA_EXE" ]]; then
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias micromamba="$MAMBA_EXE"
+    fi
+    unset __mamba_setup
+fi
+# <<< mamba initialize <<<

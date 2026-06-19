@@ -25,6 +25,9 @@ else
   eval "$("/home/linuxbrew/.linuxbrew/bin/brew" shellenv)"
 fi
 
+# uvx
+export PATH="${HOME}/.local/bin:${PATH}"
+
 # Set the default text editor for git commits, bin/crontab, etc.
 export EDITOR="vim"
 

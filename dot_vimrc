@@ -1,23 +1,23 @@
 "" ============================================================================
 "" 1. PLUGINS (Vim-Plug)
 "" ============================================================================
-call plug#begin()
-Plug 'tpope/vim-surround'
-call plug#end()
+" call plug#begin()
+" Plug 'tpope/vim-surround'
+" call plug#end()
 
 "" ============================================================================
 "" 2. LOOK & FEEL
 "" ============================================================================
 syntax on
 set termguicolors
-silent! colorscheme onedark
+silent! colorscheme habamax
 
 set number              " Show line numbers
 set relativenumber      " Make them relative for easy jumping
 set wrap                " True usability tip: wrap lines so code doesn't hide off-screen
 set linebreak           " Break lines at words, not mid-character
-set signcolumn=yes      " Always show the sign column to prevent layout shifts
-set laststatus=2        " Always show the status line
+" set signcolumn=yes      " Always show the sign column to prevent layout shifts
+" set laststatus=2        " Always show the status line
 
 "" ============================================================================
 "" 3. BEHAVIOR & NAVIGATION

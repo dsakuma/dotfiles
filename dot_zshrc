@@ -1,123 +1,148 @@
 # ==============================================================================
 # 1. HELPER FUNCTIONS & OS DETECTION
 # ==============================================================================
-eval_if_exists()   { if command -v "$1" &> /dev/null; then eval "$("$1" "${@:2}")"; fi }
-source_if_exists() { if [[ -f "$1" ]]; then source "$1"; fi }
 
-is_macos()         { [[ $OSTYPE =~ "darwin" ]]; }
-is_macos_arm()     { is_macos && [[ $(uname -p) == 'arm64' ]]; }
-is_macos_intel()   { is_macos && [[ $(uname -p) == 'i386' ]]; }
+is_macos() { [[ "${OSTYPE}" =~ "darwin" ]]; }
 
 # ==============================================================================
-# 2. CORE ENVIRONMENT VARIABLES & PATHS
+# 2. SHELL BEHAVIOUR
 # ==============================================================================
-# Homebrew (Sets global binaries for Apple Silicon Mac, Intel Mac, and Linux)
-for brew_path in "/opt/homebrew/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew" "/usr/local/bin/brew"; do
-  eval_if_exists "$brew_path" "shellenv"
-done
 
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTFILE="${HOME}/.histfile"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_VERIFY \
+       AUTO_CD INTERACTIVE_COMMENTS EXTEND_GLOB NO_BEEP
 
-export EDITOR=vim
-export FZF_DEFAULT_COMMAND='fd'
+# ==============================================================================
+# 3. CORE ENVIRONMENT VARIABLES & PATHS
+# ==============================================================================
+
+# Homebrew (Sets global binaries for Apple Silicon Mac or Linux)
+if is_macos; then
+  eval "$("/opt/homebrew/bin/brew" shellenv)"
+else
+  eval "$("/home/linuxbrew/.linuxbrew/bin/brew" shellenv)"
+fi
+
+# Set the default text editor for git commits, bin/crontab, etc.
+export EDITOR="vim"
+
+# Tell fzf to use fd for faster, hidden-file-aware file searching
+export FZF_DEFAULT_COMMAND="fd"
+
+# Force pipenv to create virtual environments inside the project root (.venv)
 export PIPENV_VENV_IN_PROJECT=1
-export ANDROID_HOME=$(if is_macos; then echo "$HOME/Library/Android/sdk"; else echo "$HOME/Android/Sdk"; fi)
 
-# Native Zsh array syntax for clean, duplicate-free PATH management
+# Define the root path for the Android SDK depending on the operating system
+export ANDROID_HOME=$(if is_macos; then echo "${HOME}/Library/Android/sdk"; else echo "${HOME}/Android/Sdk"; fi)
+
+# Keep PATH entries unique - duplicates are removed, keeping the first occurrence
 typeset -U path
 path=(
-  $HOME/.local/bin
-  $ANDROID_HOME/tools/bin
-  $ANDROID_HOME/platform-tools
-  $ANDROID_HOME/emulator
-  $path
+  "${HOME}/.local/bin"
+  "${ANDROID_HOME}/tools/bin"
+  "${ANDROID_HOME}/platform-tools"
+  "${ANDROID_HOME}/emulator"
+  ${path}
 )
 
 # ==============================================================================
-# 3. PLUGINS (Using Antidote)
+# 4. PLUGINS (Using Antidote)
 # ==============================================================================
+
 export ANTIDOTE_HOME=$(if is_macos; then echo "/opt/homebrew/opt/antidote/share/antidote"; else echo "/usr/share/zsh/share/zsh-antidote"; fi)
 
-source_if_exists $ANTIDOTE_HOME/antidote.zsh
-antidote load # Looks for a list of plugins in ~/.zshplugins by default
+source "${ANTIDOTE_HOME}/antidote.zsh"
+antidote load
 
 # ==============================================================================
-# 4. COMPLETIONS (The High-Performance Way)
+# 5. COMPLETIONS
 # ==============================================================================
+
 # Add local completions or plugin-installed completions to fpath BEFORE compinit
 typeset -U fpath
-fpath=(~/.local/share/zsh/site-functions $fpath)
+fpath=(~/.local/share/zsh/site-functions ${fpath})
 
 # Securely initialize Zsh completion system exactly once per day to optimize speed
 autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t \'%j\' ~/.zcompdump 2>/dev/null)" ]; then
+
+# Create the marker file if it doesn't exist
+touch "${HOME}/.zcompdump-marker"
+
+# If the marker was modified more than 24 hours ago (1440 mins), run full compinit
+if [[ -n $(find "${HOME}/.zcompdump-marker" -mmin +1440 2>/dev/null) ]]; then
   compinit
+  touch "${HOME}/.zcompdump-marker"
 else
   compinit -C # Skip verification if cache is fresh
 fi
 
 # ==============================================================================
-# 5. RUNTIME & ENVIRONMENT MANAGERS
+# 6. RUNTIME & ENVIRONMENT MANAGERS
 # ==============================================================================
+
 # These MUST load first because they inject languages and modify your paths.
-eval_if_exists mise activate zsh
-source_if_exists "$HOME/.cargo/env"
+eval "$(mise activate zsh)"
+source "${HOME}/.cargo/env"
 
 # ==============================================================================
-# 6. INTERACTIVE TOOLS & PROMPT
+# 7. INTERACTIVE TOOLS & PROMPT
 # ==============================================================================
-# These rely on the paths set above to build your shell's interface.
 
 # Zoxide alters the 'cd' command behavior
-eval_if_exists zoxide init --cmd cd zsh
+eval "$(zoxide init --cmd cd zsh)"
 
 # Starship renders the prompt (inherits paths from Mise/Cargo and hooks into Zoxide)
-eval_if_exists starship init zsh
+eval "$(starship init zsh)"
 
 # FZF Key-bindings & Completion configurations
-source_if_exists /usr/share/doc/fzf/examples/key-bindings.zsh
-source_if_exists /usr/share/doc/fzf/examples/completion.zsh  
-# source <(fzf --zsh) # Safe fallback if you update to fzf v0.48+
+source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+source "/usr/share/doc/fzf/examples/completion.zsh"
 
 # ==============================================================================
-# 7. ALIASES
+# 8. ALIASES
 # ==============================================================================
-alias ls="eza"
-alias cat="bat"
-alias lg="lazygit"
-alias dcup="docker-compose up"
-alias mm="micromamba"
 
+# Tool replacements
+alias ls='eza'
+alias cat='bat'
+
+# Workflow tools
+alias lg='lazygit'
+alias dcup='docker-compose up'
+alias mm='micromamba'
+
+# Maintainance
 if is_macos; then
-  alias update="brew upgrade && brew update"
+  alias update='brew upgrade && brew update'
 else
-  alias update="yay -Syu"
+  alias update='yay -Syu'
 fi
 
 # Git Shortcodes
-alias ga="git add"                                                                                                                                                                                                      
-alias gb="git branch"                                                                                                                                                                                                   
-alias gc="git commit -v"                                                                                                                                                                                                
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit -v'
 alias gcm='git checkout main 2>/dev/null || git checkout master'
-alias gco='git checkout'                                                                                                                                                                                                
-alias gd="git diff"                                                                                                                                                                                                     
+alias gco='git checkout'
+alias gd='git diff'
 alias gdca='git diff --cached'
-alias gf="git fetch"                                                                                                                                                                                                    
-alias gl='git pull'                                                                                                                                                                                                     
-alias gm="git merge"                                                                                                                                                                                                    
-alias gp="git push"                                                                                                                                                                                                     
-alias gst='git status' 
+alias gf='git fetch'
+alias gl='git pull'
+alias gm='git merge'
+alias gp='git push'
+alias gst='git status'
 alias gunwip='git log -n 1 | grep -q -c "\--wip--" && git reset HEAD~1'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 
 # ==============================================================================
-# 8. AUTO-GENERATED CONFIGS (Always at the bottom)
+# 9. AUTO-GENERATED CONFIGS (Always at the bottom)
 # ==============================================================================
+
 # >>> mamba initialize >>>
-export MAMBA_EXE='/usr/bin/micromamba';
-export MAMBA_ROOT_PREFIX='$HOME/.local/share/mamba';
+export MAMBA_EXE='/usr/bin/micromamba'
+export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba"
 if [[ -x "$MAMBA_EXE" ]]; then
     __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
     if [ $? -eq 0 ]; then

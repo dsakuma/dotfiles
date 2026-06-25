@@ -121,6 +121,7 @@ alias cat='bat'
 alias lg='lazygit'
 alias dcup='docker compose up -d'
 alias mm='micromamba'
+alias czp="chezmoi git -- add -A && chezmoi git -- commit -m 'Update dotfiles' && chezmoi git -- push"
 
 # Maintainance
 if is_macos; then

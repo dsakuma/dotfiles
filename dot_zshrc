@@ -78,6 +78,21 @@ fi
 # These MUST load first because they inject languages and modify your paths.
 eval "$(mise activate zsh)"
 
+# >>> mamba initialize >>>
+export MAMBA_EXE='/usr/bin/micromamba'
+export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba"
+if [[ -x "$MAMBA_EXE" ]]; then
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias micromamba="$MAMBA_EXE"
+    fi
+    unset __mamba_setup
+fi
+# <<< mamba initialize <<<
+
+
 # ==============================================================================
 # 7. INTERACTIVE TOOLS & PROMPT
 # ==============================================================================
@@ -96,9 +111,10 @@ eval "$(starship init zsh)"
 # ==============================================================================
 
 # Tool replacements
-alias ls='eza --icons --group-directories-first --git'
-alias ll='eza -l --icons --group-directories-first --git'
-alias la='eza -la --icons --group-directories-first --git'
+alias l='eza --icons --group-directories-first'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -l --icons --group-directories-first'
+alias la='eza -la --icons --group-directories-first'
 alias cat='bat'
 
 # Workflow tools
@@ -128,22 +144,4 @@ alias gp='git push'
 alias gst='git status'
 alias gunwip='git log -n 1 | grep -q -c "\--wip--" && git reset HEAD~1'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
-
-# ==============================================================================
-# 9. AUTO-GENERATED CONFIGS (Always at the bottom)
-# ==============================================================================
-
-# >>> mamba initialize >>>
-export MAMBA_EXE='/usr/bin/micromamba'
-export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba"
-if [[ -x "$MAMBA_EXE" ]]; then
-    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__mamba_setup"
-    else
-        alias micromamba="$MAMBA_EXE"
-    fi
-    unset __mamba_setup
-fi
-# <<< mamba initialize <<<
 

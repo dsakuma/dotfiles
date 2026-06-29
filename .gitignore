@@ -1,0 +1,13 @@
+#macOS
+.DS_Stoer
+
+# Editor leftovers
+*~
+*.un~
+*.swp
+*.swo
+
+# Secrets
+*.key
+*.pem
+.env

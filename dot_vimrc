@@ -1,12 +1,5 @@
 "" ============================================================================
-"" 1. PLUGINS (Vim-Plug)
-"" ============================================================================
-" call plug#begin()
-" Plug 'tpope/vim-surround'
-" call plug#end()
-
-"" ============================================================================
-"" 2. LOOK & FEEL
+"" 1. LOOK & FEEL
 "" ============================================================================
 syntax on
 set termguicolors
@@ -20,7 +13,7 @@ set linebreak           " Break lines at words, not mid-character
 " set laststatus=2        " Always show the status line
 
 "" ============================================================================
-"" 3. BEHAVIOR & NAVIGATION
+"" 2. BEHAVIOR & NAVIGATION
 "" ============================================================================
 set hidden              " Permit to change buffer without saving
 set mouse=a             " Enable mouse support for scrolling and resizing
@@ -36,7 +29,7 @@ set noswapfile          " Disable swapfiles
 set undofile            " Better alternative: maintain undo history across restarts
 
 "" ============================================================================
-"" 4. SEARCH
+"" 3. SEARCH
 "" ============================================================================
 set hlsearch            " Highlight matching search results
 set incsearch           " Highlight searches dynamically as you type
@@ -44,7 +37,7 @@ set ignorecase          " Case-insensitive searching...
 set smartcase           " ...unless the query contains uppercase letters
 
 "" ============================================================================
-"" 5. TABS & SPACES
+"" 4. TABS & SPACES
 "" ============================================================================
 set tabstop=2
 set shiftwidth=2
@@ -52,7 +45,7 @@ set softtabstop=2
 set expandtab
 
 "" ============================================================================
-"" 6. CUSTOM MAPPINGS & NETRW (File Explorer)
+"" 5. CUSTOM MAPPINGS & NETRW (File Explorer)
 "" ============================================================================
 " Set the Leader key to Spacebar (much easier to reach than backslash)
 let mapleader = " "

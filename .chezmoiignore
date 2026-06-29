@@ -1,0 +1,15 @@
+# Patterns match TARGET paths (the deployed name in $HOME), not the
+# source names. gitignore syntax; this file is rendered as a template.
+
+# Repo docs - keep in the repo, don't deploy to home
+README
+README.*
+LICENSE
+LICENSE.*
+CHANGELOG.*
+
+# Editor / OS leftovers
+*~
+*.un~
+*.swo
+.DS_Store

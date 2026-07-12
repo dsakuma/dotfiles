@@ -6,11 +6,10 @@ set termguicolors
 silent! colorscheme habamax
 
 set number              " Show line numbers
-" set relativenumber      " Make them relative for easy jumping
 set wrap                " True usability tip: wrap lines so code doesn't hide off-screen
 set linebreak           " Break lines at words, not mid-character
-" set signcolumn=yes      " Always show the sign column to prevent layout shifts
-" set laststatus=2        " Always show the status line
+set signcolumn=yes      " Always show the sign column to prevent layout shifts
+set laststatus=2        " Always show the status line
 
 "" ============================================================================
 "" 2. BEHAVIOR & NAVIGATION

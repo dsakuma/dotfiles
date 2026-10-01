@@ -131,6 +131,8 @@ alias lg='lazygit'
 alias dcup='docker compose up -d'
 alias mm='micromamba'
 alias cz='chezmoi'
+alias czst='chezmoi status'
+alias czra='chezmoi re-add'
 alias czp="chezmoi git -- add -A && chezmoi git -- commit -m 'Update dotfiles' && chezmoi git -- push"
 
 # Maintainance

@@ -36,6 +36,8 @@ export PIPENV_VENV_IN_PROJECT=1
 # Add custom entries to path
 path=(
   "${HOME}/.local/bin" #uvx
+  "${HOME}/.lmstudio/bin" #lmstudio
+  "${HOME}/.antigravity-ide/antigravity-ide/bin" #antigravity
   ${path}
 )
 
@@ -63,6 +65,9 @@ fpath=(~/.local/share/zsh/site-functions ${fpath})
 if is_macos; then
   fpath=(/opt/homebrew/share/zsh/site-functions ${fpath})
 fi
+
+# Docker Desktop to enocker CLI completions.
+fpath=(/Users/dsakuma/.docker/completions $fpath)
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
@@ -117,10 +122,15 @@ alias ll='eza -l --icons --group-directories-first'
 alias la='eza -la --icons --group-directories-first'
 alias vim='nvim'
 
+# Preferred implementation
+alias cp='cp -iv'
+alias mv='mv -iv'
+
 # Workflow tools
 alias lg='lazygit'
 alias dcup='docker compose up -d'
 alias mm='micromamba'
+alias cz='chezmoi'
 alias czp="chezmoi git -- add -A && chezmoi git -- commit -m 'Update dotfiles' && chezmoi git -- push"
 
 # Maintainance
@@ -149,3 +159,12 @@ alias gpop='git stash pop'
 alias gunwip='git log -n 1 | grep -q -c "\--wip--" && git reset HEAD~1'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 
+
+# Prompt update
+if [[ ! -f "$HOME/.brew-upgrade-last-prompt" || $(find "$HOME/.brew-upgrade-last-prompt" -mtime +0 -print -quit) ]]; then
+  touch "$HOME/.brew-upgrade-last-prompt"
+  read "reply?Run brew update && brew upgrade now? [y/N] "
+  if [[ "$reply" == [yY] ]]; then
+    update
+  fi
+fi

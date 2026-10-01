@@ -1,4 +1,5 @@
 [tools]
+"github:akitaonrails/ai-memory" = "latest"
 node = "lts"
 python = "3.13" 
 uv = "latest"

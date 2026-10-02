@@ -131,9 +131,10 @@ alias lg='lazygit'
 alias dcup='docker compose up -d'
 alias mm='micromamba'
 alias cz='chezmoi'
+alias czd='chezmoi diff'
 alias czst='chezmoi status'
 alias czra='chezmoi re-add'
-alias czp="chezmoi git -- add -A && chezmoi git -- commit -m 'Update dotfiles' && chezmoi git -- push"
+alias czacp="chezmoi git -- add -A && chezmoi git -- commit -m 'Update dotfiles' && chezmoi git -- push"
 
 # Maintainance
 if is_macos; then
@@ -162,7 +163,12 @@ alias gunwip='git log -n 1 | grep -q -c "\--wip--" && git reset HEAD~1'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 
 
-# Prompt update
+
+# ==============================================================================
+# 9. Prompt update
+# ==============================================================================
+
+# Brew update
 if [[ ! -f "$HOME/.brew-upgrade-last-prompt" || $(find "$HOME/.brew-upgrade-last-prompt" -mtime +0 -print -quit) ]]; then
   touch "$HOME/.brew-upgrade-last-prompt"
   read "reply?Run brew update && brew upgrade now? [y/N] "
@@ -170,3 +176,4 @@ if [[ ! -f "$HOME/.brew-upgrade-last-prompt" || $(find "$HOME/.brew-upgrade-last
     update
   fi
 fi
+
